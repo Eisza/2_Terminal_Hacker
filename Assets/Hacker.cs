@@ -21,6 +21,7 @@ public class Hacker : MonoBehaviour
         ShowMainMenu();
     }
 
+    //main menu list
     void ShowMainMenu()
     {
         Terminal.ClearScreen();
@@ -49,7 +50,8 @@ public class Hacker : MonoBehaviour
             RunPassword(input);
         }
     }
-
+    
+    //password checker
     void RunPassword(string input)
     {
         if (input == password)
@@ -62,32 +64,39 @@ public class Hacker : MonoBehaviour
         }
     }
 
+    //main menu functionality
     void RunMainMenu(string input)
     {
-        if (input == "1")
+        int intInput = int.Parse(input);
+        if (intInput >= 1 && intInput <= 3)
         {
-            level = 1;
-            password = level1passwords[3];
+            level = intInput;
             StartGame();
         }
-        else if (input == "2")
+        else
         {
-            level = 2;
-            password = level2passwords[3];
-            StartGame();
-        }
-        else if (input == "3")
-        {
-            level = 3;
-            password = level3passwords[3];
-            StartGame();
+            Terminal.WriteLine("please choose valid");
         }
     }
 
-
+    //beyond choose level
     void StartGame()
     {
-        ShowMainMenu();
+        Terminal.ClearScreen();
+        switch (level)
+        {
+            case 1:
+                password = level1passwords[0];
+                break;
+            case 2:
+                password = level2passwords[0];
+                break;
+            case 3:
+                password = level3passwords[0];
+                break;
+            default:
+                break;
+        }
         currentScreen = Screen.Password;
         Terminal.WriteLine("Please Enter  Password:");
     }
