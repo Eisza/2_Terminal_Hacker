@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
-    string[] level1passwords = { "redbull", "oreo", "camel", "snickers" };
-    string[] level2passwords = { "intervention", "barret", "desereagle", "snickers" };
-    string[] level3passwords = { "panzerkampfwagen", "oreo", "camel", "snickers" };
+    string[] level1passwords = { "water", "oreo", "camel", "twix" };
+    string[] level2passwords = { "dragunov", "barret", "desereagle", "bayonet" };
+    string[] level3passwords = { "panzerkampfwagen", "KlimentVoroshilov", "Neubaufahrzeug", "SamokhodnayaUstanovka" };
 
 
     int level;
