@@ -5,7 +5,7 @@ public class Hacker : MonoBehaviour
 {
     string[] level1passwords = { "water", "oreo", "camel", "twix" };
     string[] level2passwords = { "dragunov", "barret", "desereagle", "bayonet" };
-    string[] level3passwords = { "panzerkampfwagen", "KlimentVoroshilov", "Neubaufahrzeug", "SamokhodnayaUstanovka" };
+    string[] level3passwords = { "panzerkampfwagen", "klimentvoroshilov", "neubaufahrzeug", "samokhodnayaustanovka" };
 
 
     int level;
