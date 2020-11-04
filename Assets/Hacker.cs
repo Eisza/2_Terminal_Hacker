@@ -67,14 +67,12 @@ public class Hacker : MonoBehaviour
     }
 
 
-    //main menu functionality
+    //main menu functionality 
     void RunMainMenu(string input)
     {
-        int intInput = int.Parse(input);
-        print(intInput);
-        if (intInput >= 1 && intInput <= 3 )
+        if (input == "1" || input == "2" || input =="3")
         {
-            level = intInput;
+            level = int.Parse(input);
             AskForPassword();
         }
         else
