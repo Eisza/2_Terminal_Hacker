@@ -58,7 +58,7 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("false");
+            AskForPassword();
         }
     }
 
@@ -69,7 +69,7 @@ public class Hacker : MonoBehaviour
         if (intInput >= 1 && intInput <= 3)
         {
             level = intInput;
-            StartGame();
+            AskForPassword();
         }
         else
         {
@@ -78,9 +78,16 @@ public class Hacker : MonoBehaviour
     }
 
     //beyond choose level
-    void StartGame()
+    void AskForPassword()
     {
         Terminal.ClearScreen();
+        SetRandomPassword();
+        currentScreen = Screen.Password;
+        Terminal.WriteLine("Enter Password!. Hint:" + password.Anagram());
+    }
+
+    void SetRandomPassword()
+    {
         switch (level)
         {
             case 1:
@@ -95,8 +102,6 @@ public class Hacker : MonoBehaviour
             default:
                 break;
         }
-        currentScreen = Screen.Password;
-        Terminal.WriteLine("Please Enter  Password:");
     }
 
     // Update is called once per frame
