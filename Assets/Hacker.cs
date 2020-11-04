@@ -55,10 +55,61 @@ public class Hacker : MonoBehaviour
         if (input == password)
         {
             Terminal.WriteLine("true");
+            DisplayWinScreen();
         }
         else
         {
             AskForPassword();
+        }
+    }
+
+    //handle winning screen
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        DisplayArt();
+    }
+
+    void DisplayArt()
+    {
+        switch (level)
+        {
+            case 1:
+                Terminal.WriteLine(@"
+mmmm
+      _____________,-.___     _
+     |____        { {]_]_]   [_]
+     |___ `-----.__\ \_]_]_    . `
+     |   `-----.____} }]_]_]_   ,
+     |_____________/ {_]_]_]_] , `
+"
+                );
+                break;
+            case 2:
+                Terminal.WriteLine(@"
+                           ______
+        |\_______________ (_____\\______________
+HH======#H###############H#######################
+        ' ~""""""""""""`##''(_))#H\''''Y########
+                        ##      \#H\       \Y####
+pew                     ##       }#H)
+"
+                );
+                break;
+            case 3:
+                Terminal.WriteLine(@"
+    TONK! 
+       _\______
+      /        \========
+ ____|__________\_____
+/ ___________________ \
+\/{oOOOOOOOOOOOOOOOo}\/
+  \o%%%%%%%%%%%%%%%o/
+"
+                );
+                break;
+
         }
     }
 
