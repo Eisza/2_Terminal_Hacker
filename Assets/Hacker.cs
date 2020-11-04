@@ -13,6 +13,9 @@ public class Hacker : MonoBehaviour
     enum Screen { MainMenu, Password, Win};
     Screen currentScreen = Screen.MainMenu;
 
+    //stuff to use
+    string menuHint = "Type menu to restart!";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,12 +66,63 @@ public class Hacker : MonoBehaviour
         }
     }
 
+
+    //main menu functionality
+    void RunMainMenu(string input)
+    {
+        int intInput = int.Parse(input);
+        print(intInput);
+        if (intInput >= 1 && intInput <= 3 )
+        {
+            level = intInput;
+            AskForPassword();
+        }
+        else
+        {
+            Terminal.WriteLine("please choose valid");
+        }
+    }
+
+    //beyond choose level
+    void AskForPassword()
+    {
+        Terminal.ClearScreen();
+        SetRandomPassword();
+        currentScreen = Screen.Password;
+        Terminal.WriteLine(menuHint);
+        Terminal.WriteLine("Enter Password!. Hint:" + password.Anagram());
+    }
+
+    void SetRandomPassword()
+    {
+        switch (level)
+        {
+            case 1:
+                password = level1passwords[UnityEngine.Random.Range(0, level1passwords.Length)];
+                break;
+            case 2:
+                password = level2passwords[UnityEngine.Random.Range(0, level2passwords.Length)];
+                break;
+            case 3:
+                password = level3passwords[UnityEngine.Random.Range(0, level3passwords.Length)];
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     //handle winning screen
     void DisplayWinScreen()
     {
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         DisplayArt();
+        Terminal.WriteLine(menuHint);
     }
 
     void DisplayArt()
@@ -112,53 +166,5 @@ mmmm
                 break;
 
         }
-    }
-
-    //main menu functionality
-    void RunMainMenu(string input)
-    {
-        int intInput = int.Parse(input);
-        if (intInput >= 1 && intInput <= 3)
-        {
-            level = intInput;
-            AskForPassword();
-        }
-        else
-        {
-            Terminal.WriteLine("please choose valid");
-        }
-    }
-
-    //beyond choose level
-    void AskForPassword()
-    {
-        Terminal.ClearScreen();
-        SetRandomPassword();
-        currentScreen = Screen.Password;
-        Terminal.WriteLine("Enter Password!. Hint:" + password.Anagram());
-    }
-
-    void SetRandomPassword()
-    {
-        switch (level)
-        {
-            case 1:
-                password = level1passwords[UnityEngine.Random.Range(0, level1passwords.Length)];
-                break;
-            case 2:
-                password = level2passwords[UnityEngine.Random.Range(0, level2passwords.Length)];
-                break;
-            case 3:
-                password = level3passwords[UnityEngine.Random.Range(0, level3passwords.Length)];
-                break;
-            default:
-                break;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
