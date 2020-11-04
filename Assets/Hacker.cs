@@ -55,7 +55,7 @@ public class Hacker : MonoBehaviour
         if (input == password)
         {
             Terminal.WriteLine("true");
-            ShowWinScreen();
+            DisplayWinScreen();
         }
         else
         {
@@ -64,7 +64,14 @@ public class Hacker : MonoBehaviour
     }
 
     //handle winning screen
-    void ShowWinScreen()
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        DisplayArt();
+    }
+
+    void DisplayArt()
     {
         switch (level)
         {
